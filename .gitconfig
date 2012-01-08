@@ -1,0 +1,9 @@
+[core]
+	editor = nano
+[user]
+	name = Ryan Michael
+	email = kerinin@gmail.com
+[alias]
+	branch = br
+	checkout = co
+	status = st
