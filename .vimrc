@@ -48,7 +48,6 @@ filetype plugin indent on     " required!
 " NOTE: comments after Bundle command are not allowed..
 
 set nu " show line numbers
-colorscheme darkspectrum
 
 if has("gui_running")
 	set guioptions=egmrt " remove chrome cruft from window
