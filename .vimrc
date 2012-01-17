@@ -29,6 +29,7 @@ Bundle 'ZoomWin'
 Bundle 'vim-coffee-script'
 Bundle 'vim-stylus'
 Bundle 'Indent-Guides'
+Bundle 'rails.vim' 
 " vim-scripts repos
 " Bundle 'L9'
 " Bundle 'FuzzyFinder'
