@@ -1,0 +1,42 @@
+[submodule ".vim/bundle/ack"]
+	path = .vim/bundle/ack
+	url = git://github.com/mileszs/ack.vim.git
+[submodule ".vim/bundle/fuzzyfinder"]
+	path = .vim/bundle/fuzzyfinder
+	url = git://github.com/clones/vim-fuzzyfinder.git
+[submodule ".vim/bundle/markdown"]
+	path = .vim/bundle/markdown
+	url = git://github.com/tpope/vim-markdown.git
+[submodule ".vim/bundle/nerdtree"]
+	path = .vim/bundle/nerdtree
+	url = git://github.com/scrooloose/nerdtree.git
+[submodule ".vim/bundle/pig"]
+	path = .vim/bundle/pig
+	url = git://github.com/vim-scripts/pig.vim.git
+[submodule ".vim/bundle/scss-syntax"]
+	path = .vim/bundle/scss-syntax
+	url = git://github.com/cakebaker/scss-syntax.vim.git
+[submodule ".vim/bundle/slim"]
+	path = .vim/bundle/slim
+	url = git://github.com/bbommarito/vim-slim.git
+[submodule ".vim/bundle/solarized"]
+	path = .vim/bundle/solarized
+	url = git://github.com/altercation/vim-colors-solarized.git
+[submodule ".vim/bundle/surround"]
+	path = .vim/bundle/surround
+	url = git://github.com/tpope/vim-surround.git
+[submodule ".vim/bundle/tcomment"]
+	path = .vim/bundle/tcomment
+	url = git://github.com/tomtom/tcomment_vim.git
+[submodule ".vim/bundle/coffee-script"]
+	path = .vim/bundle/coffee-script
+	url = git://github.com/kchmck/vim-coffee-script.git
+[submodule ".vim/bundle/fugitive"]
+	path = .vim/bundle/fugitive
+	url = git://github.com/tpope/vim-fugitive.git
+[submodule ".vim/bundle/textobj-user"]
+	path = .vim/bundle/textobj-user
+	url = git://github.com/kana/vim-textobj-user.git
+[submodule ".vim/bundle/l9"]
+	path = .vim/bundle/l9
+	url = git://github.com/clones/vim-l9.git

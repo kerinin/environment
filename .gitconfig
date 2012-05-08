@@ -1,9 +1,23 @@
 [core]
-	editor = nano
+  editor = vim
+
 [user]
-	name = Ryan Michael
-	email = kerinin@gmail.com
+  name = Ryan Michael
+  email = kerinin@gmail.com
+
 [alias]
-	branch = br
-	checkout = co
-	status = st
+  br = branch
+  co = checkout
+  st = status
+  d = difftool
+
+[diff]
+  external = git_diff_wrapper
+[pager]
+  diff =
+
+[push]
+  default = current
+
+[github]
+  user = kerinin
