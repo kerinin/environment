@@ -1,6 +1,0 @@
-Image.where("id >= 843").each do |i|
-Image.where("id >= 843").all.each do |i|
-Image.where("id >= 843").all.each {|i|
-Image.where("id >= 843").all.each {|i|
-tom = RightAws::S3.new('AKIAI7JFUJSFBH7DZDMQ', 'nQo5Bo3NCbqRUDQmYDhFy/3FRPoK35Ni9DF2RXUe')
-RightAws

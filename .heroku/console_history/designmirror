@@ -1,6 +1,0 @@
-Project.count
-Project.first
-Project.first.estimated_cost
-Project.first.cost
-Project.last.cost
-Project
