@@ -8,6 +8,15 @@ filetype off
 syntax enable
 filetype plugin indent on
 
+" Folding settings
+nmap z1 :set foldenable<cr> :set foldlevel=1<cr>
+nmap z2 :set foldenable<cr> :set foldlevel=2<cr>
+nmap z3 :set foldenable<cr> :set foldlevel=3<cr>
+nmap z4 :set foldenable<cr> :set foldlevel=4<cr>
+set foldmethod=syntax
+set foldlevel=2
+set nofoldenable
+
 if has("autocmd")
   filetype indent plugin on
 endif

@@ -1,11 +1,9 @@
 if [ -f `brew --prefix`/etc/bash_completion.d/git-completion.bash  ]; then
   . `brew --prefix`/etc/bash_completion.d/git-completion.bash 
 fi
-export PATH="$HOME/environment/bin:/usr/local/bin/:$HOME/.rbenv/bin:$PATH"
+export PATH="$HOME/.rbenv/bin:$HOME/environment/bin:/usr/local/bin/:$PATH"
 export EDITOR="vim"
 eval "$(rbenv init -)"
-
-source ~/git-completion.bash
 
 # OIB shortcuts
 alias oib_jenkins='ssh -l ubuntu -L8080:localhost:8080 ubuntu@ec2-50-17-93-145.compute-1.amazonaws.com'
@@ -15,6 +13,12 @@ function gcb() {
 
 function gco() {
   grep url .git/config | cut -d: -f2 | sed -e 's/\.git//'
+}
+
+function gfb() {
+  branch=`gcb`
+
+  git checkout master && git branch -d $branch && git push origin :$branch
 }
 
 alias gpn='git push -u origin `gcb`'

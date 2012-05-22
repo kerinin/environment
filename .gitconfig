@@ -19,5 +19,8 @@
 [push]
   default = current
 
+[pull]
+  default = current
+
 [github]
   user = kerinin
