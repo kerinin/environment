@@ -1,0 +1,2 @@
+--type-add=ruby=.haml,.rake,.yml,.slim
+--type-add=html=.sass,.scss
