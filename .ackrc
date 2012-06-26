@@ -1,2 +1,4 @@
 --type-add=ruby=.haml,.rake,.yml,.slim
 --type-add=html=.sass,.scss
+--type-add=js=.coffee
+--type-set=cucumber=.feature

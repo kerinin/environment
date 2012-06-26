@@ -9,13 +9,13 @@ syntax enable
 filetype plugin indent on
 
 " Folding settings
-nmap z1 :set foldenable<cr> :set foldlevel=1<cr>
-nmap z2 :set foldenable<cr> :set foldlevel=2<cr>
-nmap z3 :set foldenable<cr> :set foldlevel=3<cr>
-nmap z4 :set foldenable<cr> :set foldlevel=4<cr>
-set foldmethod=syntax
-set foldlevel=2
-set nofoldenable
+" nmap z1 :set foldenable<cr> :set foldlevel=1<cr>
+" nmap z2 :set foldenable<cr> :set foldlevel=2<cr>
+" nmap z3 :set foldenable<cr> :set foldlevel=3<cr>
+" nmap z4 :set foldenable<cr> :set foldlevel=4<cr>
+" set foldmethod=syntax
+" set foldlevel=2
+" set nofoldenable
 
 if has("autocmd")
   filetype indent plugin on
@@ -32,8 +32,9 @@ nmap <C-k> <C-w>k
 nmap <C-l> <C-w>l
 
 nmap <silent> <leader>n :NERDTreeToggle<cr>
+let g:NERDTreeWinSize = 40
 
-set background=dark
+set background=light
 colorscheme solarized
 set number
 set nowrap
@@ -54,3 +55,5 @@ set incsearch
 
 " Don't leave .swp all over the place
 set noswapfile
+
+set mouse=a
