@@ -1,6 +1,7 @@
-if [ -f `brew --prefix`/etc/bash_completion.d/git-completion.bash  ]; then
-  . `brew --prefix`/etc/bash_completion.d/git-completion.bash 
-fi
+# if [ -f `brew --prefix`/etc/bash_completion.d/git-completion.bash  ]; then
+#   . `brew --prefix`/etc/bash_completion.d/git-completion.bash 
+# fi
+source ~/git-completion.bash
 export PATH="$HOME/.rbenv/bin:$HOME/environment/bin:/usr/local/bin/:$PATH"
 export EDITOR="vim"
 eval "$(rbenv init -)"

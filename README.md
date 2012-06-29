@@ -11,11 +11,14 @@
 Brew install:
 
 * git
-* vim
+* bash-completion
 * ack
 * mysql
 * redis
 * memcached
+* ruby-build
+* wget
+* qt
 
 [Solarized](http://ethanschoonover.com/solarized)
 
@@ -27,7 +30,16 @@ XCode - available from app store.  Make sure to install Console tools from the p
  
 [ruby-build](https://github.com/sstephenson/ruby-build)
 
+[pathogen](https://github.com/tpope/vim-pathogen)
+
+
+## environment
+
+    git submodule init
+    git submodule update
+
 
 ## Ruby
 
-    rbenv install 1.9.2-p290
+    rbenv install ree-1.8.7-2012.02
+    rbenv install 1.9.3-p194
