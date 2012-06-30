@@ -30,13 +30,24 @@ XCode - available from app store.  Make sure to install Console tools from the p
  
 [ruby-build](https://github.com/sstephenson/ruby-build)
 
-[pathogen](https://github.com/tpope/vim-pathogen)
-
 
 ## environment
 
-    git submodule init
-    git submodule update
+``` sh
+cd ~/
+git clone git@github.com:kerinin/environment.git
+cd ~/environment
+git submodule init
+git submodule update
+cd ~/
+
+ln -s environment/.ackrc ./
+ln -s environment/.bash_profile ./
+ln -s environment/.gemrc ./
+ln -s environment/.rbenv ./
+ln -s environment/.vim ./
+ln -s environment/.vimrc ./
+```
 
 
 ## Ruby
