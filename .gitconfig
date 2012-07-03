@@ -24,3 +24,7 @@
 
 [github]
   user = kerinin
+
+[color]
+  diff = true
+  status = true
