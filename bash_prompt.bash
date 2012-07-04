@@ -18,9 +18,9 @@ function parse_git_branch {
     commit_state_color=$(parse_commit_status "$status")
     push_status=$(parse_push_status "$status")
 
-    result="${commit_state_color}[${branch}${NORMAL}${push_status}${commit_state_color}]${NORMAL}"
+    result="${commit_state_color}${branch}${NORMAL} ${push_status}${commit_state_color}${NORMAL}"
 
-    echo " ${result}"
+    echo "${BLUE}❦ ${result}"
   fi
 }
 
@@ -40,16 +40,16 @@ function parse_commit_status () {
 
 function parse_push_status () {
   if [[ "$1" =~ "Your branch is ahead" ]]; then
-    echo "${GREEN}✔${NORMAL}"
+    echo "${GREEN}⟳  ${NORMAL}"
   elif [[ "$1" =~ "Your branch is behind" ]]; then
-    echo "${YELLOW}✘${NORMAL}"
+    echo "${YELLOW}⟲  ${NORMAL}"
   elif [[ "$1" =~ "have diverged" ]]; then
-    echo "${RED}✘${NORMAL}"
+    echo "${RED}⟿  ${NORMAL}"
   fi
 }
 
 function ps1_function {
-  export PS1="$SUBTLE \W$(parse_git_branch) ${CYAN}⚡${NORMAL} "
+  export PS1="$SUBTLE\W ${NORMAL}$(parse_git_branch)${BLUE}❧ ${NORMAL}"
 }
 
 export PROMPT_COMMAND='ps1_function'
