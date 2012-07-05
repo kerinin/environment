@@ -2,7 +2,7 @@
 #   . `brew --prefix`/etc/bash_completion.d/git-completion.bash 
 # fi
 source ~/environment/bin/git-completion.bash
-export PATH="$HOME/.rbenv/bin:$HOME/environment/bin:/usr/local/bin/:$PATH"
+export PATH="$HOME/.rbenv/bin:$HOME/environment/bin:/usr/local/bin:$PATH"
 export EDITOR="vim"
 eval "$(rbenv init -)"
 
@@ -12,7 +12,7 @@ function gcb() {
 git branch | grep '^\*' | cut -c3-
 }
 
-function gco() {
+function gcf() {
 grep url .git/config | cut -d: -f2 | sed -e 's/\.git//'
 }
 
@@ -29,9 +29,19 @@ gfb ()
 }
 
 alias gpn='git push -u origin `gcb`'
-alias gpr='open "https://github.com/`gco`/pull/new/`gcb`"'
+alias gpr='open "https://github.com/`gcf`/pull/new/`gcb`"'
+alias gst='git status'
+alias gco='git checkout'
+alias gdf='git diff'
+alias gca='git commit -a'
+alias gpu='git pull origin'
+alias gfp='git fetch --prune'
+
+alias bi='bundle install'
 alias be='bundle exec'
 alias bers='time bundle exec rspec'
+alias bec='bundle exec cucumber'
+alias ber='bundle exec rails'
 
 # Pretty prompt
 source ~/environment/bash_prompt.bash

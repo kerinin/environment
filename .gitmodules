@@ -40,3 +40,6 @@
 [submodule ".vim/bundle/l9"]
 	path = .vim/bundle/l9
 	url = git://github.com/clones/vim-l9.git
+[submodule ".vim/bundle/yaml"]
+	path = .vim/bundle/yaml
+	url = git://github.com/avakhov/vim-yaml.git
