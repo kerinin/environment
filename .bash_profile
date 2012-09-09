@@ -5,6 +5,7 @@ source ~/environment/bin/git-completion.bash
 export PATH="$HOME/.rbenv/bin:$HOME/environment/bin:/usr/local/bin:$PATH"
 export EDITOR="vim"
 eval "$(rbenv init -)"
+export JAVA_HOME=$(/usr/libexec/java_home)
 
 # OIB shortcuts
 alias oib_jenkins='ssh -l ubuntu -L8080:localhost:8080 ubuntu@ec2-50-17-93-145.compute-1.amazonaws.com'
@@ -45,3 +46,7 @@ alias ber='bundle exec rails'
 
 # Pretty prompt
 source ~/environment/bash_prompt.bash
+
+# Rubinius
+export RBX_ROOT=$HOME/.rbenv/versions/rbx-2.0.0-dev
+export PATH=$PATH:$RBX_ROOT/gems/1.9/bin
