@@ -34,7 +34,7 @@ nmap <C-l> <C-w>l
 nmap <silent> <leader>n :NERDTreeToggle<cr>
 let g:NERDTreeWinSize = 40
 
-set background=light
+set background=dark
 colorscheme solarized
 set number
 set nowrap
@@ -57,3 +57,13 @@ set incsearch
 set noswapfile
 
 set mouse=a
+augroup filetypedetect 
+  au BufNewFile,BufRead *.pig set filetype=pig syntax=pig 
+augroup END
+
+au WinLeave * set nocursorline nocursorcolumn
+au WinEnter * set cursorline cursorcolumn
+set cursorline cursorcolumn
+
+au BufRead,BufNewFile *.pde set filetype=arduino
+au BufRead,BufNewFile *.ino set filetype=arduino

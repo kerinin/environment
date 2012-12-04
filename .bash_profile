@@ -40,7 +40,7 @@ alias gfp='git fetch --prune'
 
 alias bi='bundle install'
 alias be='bundle exec'
-alias bers='time bundle exec rspec'
+alias bers='time bundle exec rspec --format Fuubar'
 alias bec='bundle exec cucumber'
 alias ber='bundle exec rails'
 
@@ -50,3 +50,14 @@ source ~/environment/bash_prompt.bash
 # Rubinius
 export RBX_ROOT=$HOME/.rbenv/versions/rbx-2.0.0-dev
 export PATH=$PATH:$RBX_ROOT/gems/1.9/bin
+
+alias commas="sed -e :a -e 's/\(.*[0-9]\)\([0-9]\{3\}\)/\1,\2/;ta'"
+
+# GRC colors
+source "`brew --prefix`/etc/grc.bashrc"
+
+# vi mode
+set -o vi
+
+alias ctags="`brew --prefix`/bin/ctags"
+
