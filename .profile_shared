@@ -45,3 +45,5 @@ alias ber='bundle exec rails'
 
 # Pretty prompt
 source ~/environment/bash_prompt.bash
+
+set -o vi
