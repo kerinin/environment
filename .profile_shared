@@ -5,7 +5,6 @@ source ~/environment/bin/git-completion.bash
 export PATH="$HOME/.rbenv/bin:$HOME/environment/bin:/usr/local/bin:$PATH"
 export EDITOR="vim"
 eval "$(rbenv init -)"
-export JAVA_HOME=$(/usr/libexec/java_home)
 
 # OIB shortcuts
 alias oib_jenkins='ssh -l ubuntu -L8080:localhost:8080 ubuntu@ec2-50-17-93-145.compute-1.amazonaws.com'
@@ -53,11 +52,5 @@ export PATH=$PATH:$RBX_ROOT/gems/1.9/bin
 
 alias commas="sed -e :a -e 's/\(.*[0-9]\)\([0-9]\{3\}\)/\1,\2/;ta'"
 
-# GRC colors
-source "`brew --prefix`/etc/grc.bashrc"
-
 # vi mode
 set -o vi
-
-alias ctags="`brew --prefix`/bin/ctags"
-
