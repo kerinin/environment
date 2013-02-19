@@ -35,7 +35,7 @@ nmap <silent> <leader>n :NERDTreeToggle<cr>
 let g:NERDTreeWinSize = 40
 
 set background=dark
-colorscheme solarized
+silent! colorscheme solarized
 set number
 set nowrap
 set linebreak

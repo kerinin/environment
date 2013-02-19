@@ -1,10 +1,17 @@
 # if [ -f `brew --prefix`/etc/bash_completion.d/git-completion.bash  ]; then
 #   . `brew --prefix`/etc/bash_completion.d/git-completion.bash 
 # fi
+
+command_exists () {
+  type "$1" &> /dev/null ;
+}
+
 source ~/environment/bin/git-completion.bash
 export PATH="$HOME/.rbenv/bin:$HOME/environment/bin:/usr/local/bin:$PATH"
 export EDITOR="vim"
-eval "$(rbenv init -)"
+if command_exists rbenv ; then
+  eval "$(rbenv init -)"
+fi
 
 # OIB shortcuts
 alias oib_jenkins='ssh -l ubuntu -L8080:localhost:8080 ubuntu@ec2-50-17-93-145.compute-1.amazonaws.com'
