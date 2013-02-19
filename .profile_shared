@@ -90,3 +90,9 @@ function screened()
 {
   ssh -t $1 screen -R
 }
+
+function find_recent()
+{
+  find . -type f -printf '%T@ %p\n' | sort -k 1nr | sed 's/^[^ ]* //' | head -n "${1:-10}"
+}
+
