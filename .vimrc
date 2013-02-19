@@ -67,3 +67,6 @@ set cursorline cursorcolumn
 
 au BufRead,BufNewFile *.pde set filetype=arduino
 au BufRead,BufNewFile *.ino set filetype=arduino
+
+" Always display the path
+set laststatus=2

@@ -8,14 +8,23 @@ eval "$(rbenv init -)"
 
 # OIB shortcuts
 alias oib_jenkins='ssh -l ubuntu -L8080:localhost:8080 ubuntu@ec2-50-17-93-145.compute-1.amazonaws.com'
+
+# Current branch
 function gcb() {
 git branch | grep '^\*' | cut -c3-
 }
 
+# Current Hash
+function gch() {
+git log -n1 --pretty=format:'%H'
+}
+
+# Github account / repo name
 function gcf() {
 grep url .git/config | cut -d: -f2 | sed -e 's/\.git//'
 }
 
+# Finish branch
 gfb () 
 { 
   branch=`gcb`;
@@ -26,6 +35,23 @@ gfb ()
     echo "Hey, man, $branch isn't merged yet!";
     git checkout $branch;
   fi
+}
+
+function gsq()
+{
+  start=`gch`
+  base=`gcb`
+  tmp=$base'_squashed'
+  target=${1:-master}
+
+  git co $target
+  git co -b $tmp
+  git merge --squash $base
+  gca
+  git br -D $base
+  git br -m $tmp $base
+
+  echo "Branch '$base' squashed onto '$target' (ref $start -> `gch`)"
 }
 
 alias gpn='git push -u origin `gcb`'
@@ -54,3 +80,13 @@ alias commas="sed -e :a -e 's/\(.*[0-9]\)\([0-9]\{3\}\)/\1,\2/;ta'"
 
 # vi mode
 set -o vi
+
+function summation()
+{
+  paste -sd+ - | bc
+}
+
+function screened()
+{
+  ssh -t $1 screen -R
+}
