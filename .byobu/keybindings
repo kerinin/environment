@@ -1,4 +1,4 @@
-  bindkey ^A
+  # bindkey ^A
   escape ^Tt
   register x ^t                                         #     | Goes with the F12 definition
   register x ^A
