@@ -40,3 +40,15 @@
 [submodule ".vim/bundle/l9"]
 	path = .vim/bundle/l9
 	url = git://github.com/clones/vim-l9.git
+[submodule ".vim/bundle/yaml"]
+	path = .vim/bundle/yaml
+	url = git://github.com/avakhov/vim-yaml.git
+[submodule ".vim/bundle/thor"]
+	path = .vim/bundle/thor
+	url = git://github.com/jc00ke/thor.vim.git
+[submodule ".vim/bundle/arduino"]
+	path = .vim/bundle/arduino
+	url = git@github.com:tclem/vim-arduino.git
+[submodule ".vim/bundle/powerline"]
+	path = .vim/bundle/powerline
+	url = git@github.com:Lokaltog/vim-powerline.git

@@ -1,0 +1,10 @@
+source ~/environment/.profile_shared
+
+export JAVA_HOME=$(/usr/libexec/java_home)
+
+# GRC colors
+source "`brew --prefix`/etc/grc.bashrc"
+alias ctags="`brew --prefix`/bin/ctags"
+
+export PYTHONPATH=/usr/local/lib/python2.7/site-packages:$PYTHONPATH
+export PATH=/Library/Frameworks/GDAL.framework/Programs:$PATH
