@@ -2,9 +2,9 @@
 #   . `brew --prefix`/etc/bash_completion.d/git-completion.bash 
 # fi
 source ~/environment/bin/git-completion.bash
-export PATH="$HOME/.rbenv/bin:$HOME/environment/bin:/usr/local/bin/:$PATH"
+export PATH="$HOME/environment/bin:/usr/local/bin/:$PATH"
 export EDITOR="vim"
-eval "$(rbenv init -)"
+#eval "$(rbenv init -)"
 
 # OIB shortcuts
 alias oib_jenkins='ssh -l ubuntu -L8080:localhost:8080 ubuntu@ec2-50-17-93-145.compute-1.amazonaws.com'
@@ -35,3 +35,5 @@ alias bers='time bundle exec rspec'
 
 # Pretty prompt
 source ~/environment/bash_prompt.bash
+
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*

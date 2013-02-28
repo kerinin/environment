@@ -20,7 +20,7 @@ function parse_git_branch {
 
     result="${commit_state_color}${branch}${NORMAL} ${push_status}${commit_state_color}${NORMAL}"
 
-    echo "${BLUE}❦ ${result}"
+    echo "${BLUE}» ${result}"
   fi
 }
 
@@ -49,7 +49,7 @@ function parse_push_status () {
 }
 
 function ps1_function {
-  export PS1="$SUBTLE\W ${NORMAL}$(parse_git_branch)${BLUE}❧ ${NORMAL}"
+  export PS1="$SUBTLE\W ${NORMAL}$(parse_git_branch)${BLUE}» ${NORMAL}"
 }
 
 export PROMPT_COMMAND='ps1_function'
