@@ -48,7 +48,7 @@
 	url = git://github.com/jc00ke/thor.vim.git
 [submodule ".vim/bundle/arduino"]
 	path = .vim/bundle/arduino
-	url = git@github.com:tclem/vim-arduino.git
+	url = git://github.com:tclem/vim-arduino.git
 [submodule ".vim/bundle/powerline"]
 	path = .vim/bundle/powerline
-	url = git@github.com:Lokaltog/vim-powerline.git
+	url = git://github.com:Lokaltog/vim-powerline.git
