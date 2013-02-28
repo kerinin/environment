@@ -44,11 +44,14 @@ git submodule update
 cd ~/
 
 ln -s environment/.ackrc ./
-ln -s environment/.bash_profile ./
+ln -s environment/.byobu ./
 ln -s environment/.gemrc ./
 ln -s environment/.rbenv ./
 ln -s environment/.vim ./
 ln -s environment/.vimrc ./
+
+echo "source environment/.profile_ubuntu" >> ~/.bashrc
+echo "source environment/.profile_osx" >> ~/.bash_profile
 ```
 
 
