@@ -51,4 +51,4 @@
     url = git://github.com/tclem/vim-arduino.git
 [submodule ".vim/bundle/powerline"]
 	path = .vim/bundle/powerline
-	url = git://github.com:Lokaltog/vim-powerline.git
+	url = git://github.com/Lokaltog/vim-powerline.git
