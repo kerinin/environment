@@ -48,7 +48,7 @@ function parse_push_status () {
   fi
 }
 
-function ps1_function {
+function ps1_function () {
   export PS1="$SUBTLE\W ${NORMAL}$(parse_git_branch)${BLUE}❧ ${NORMAL}"
 }
 

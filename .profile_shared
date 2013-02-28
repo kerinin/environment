@@ -1,0 +1,105 @@
+# if [ -f `brew --prefix`/etc/bash_completion.d/git-completion.bash  ]; then
+#   . `brew --prefix`/etc/bash_completion.d/git-completion.bash 
+# fi
+
+command_exists () {
+  type "$1" &> /dev/null ;
+}
+
+source ~/environment/bin/git-completion.bash
+export PATH="$HOME/.rbenv/bin:$HOME/environment/bin:/usr/local/bin:$PATH"
+export EDITOR="vim"
+if command_exists rbenv ; then
+  eval "$(rbenv init -)"
+fi
+
+# OIB shortcuts
+alias oib_jenkins='ssh -l ubuntu -L8080:localhost:8080 ubuntu@ec2-50-17-93-145.compute-1.amazonaws.com'
+
+# Current branch
+function gcb() {
+git branch | grep '^\*' | cut -c3-
+}
+
+# Current Hash
+function gch() {
+git log -n1 --pretty=format:'%H'
+}
+
+# Github account / repo name
+function gcf() {
+grep url .git/config | cut -d: -f2 | sed -e 's/\.git//'
+}
+
+# Finish branch
+gfb () 
+{ 
+  branch=`gcb`;
+  git checkout master && git pull --prune;
+  if [[ $1 == '--force' || -z `git branch --no-merged master | grep $branch` ]]; then
+    git branch -d $branch && git push origin :$branch;
+  else
+    echo "Hey, man, $branch isn't merged yet!";
+    git checkout $branch;
+  fi
+}
+
+function gsq()
+{
+  start=`gch`
+  base=`gcb`
+  tmp=$base'_squashed'
+  target=${1:-master}
+
+  git co $target
+  git co -b $tmp
+  git merge --squash $base
+  gca
+  git br -D $base
+  git br -m $tmp $base
+
+  echo "Branch '$base' squashed onto '$target' (ref $start -> `gch`)"
+}
+
+alias gpn='git push -u origin `gcb`'
+alias gpr='open "https://github.com/`gcf`/pull/new/`gcb`"'
+alias gst='git status'
+alias gco='git checkout'
+alias gdf='git diff'
+alias gca='git commit -a'
+alias gpu='git pull origin'
+alias gfp='git fetch --prune'
+
+alias bi='bundle install'
+alias be='bundle exec'
+alias bers='time bundle exec rspec --format Fuubar'
+alias bec='bundle exec cucumber'
+alias ber='bundle exec rails'
+
+# Pretty prompt
+source ~/environment/bash_prompt.bash
+
+# Rubinius
+export RBX_ROOT=$HOME/.rbenv/versions/rbx-2.0.0-dev
+export PATH=$PATH:$RBX_ROOT/gems/1.9/bin
+
+alias commas="sed -e :a -e 's/\(.*[0-9]\)\([0-9]\{3\}\)/\1,\2/;ta'"
+
+# vi mode
+set -o vi
+
+function summation()
+{
+  paste -sd+ - | bc
+}
+
+function screened()
+{
+  ssh -t $1 screen -R
+}
+
+function find_recent()
+{
+  find . -type f -printf '%T@ %p\n' | sort -k 1nr | sed 's/^[^ ]* //' | head -n "${1:-10}"
+}
+

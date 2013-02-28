@@ -10,6 +10,7 @@
   co = checkout
   st = status
   d = difftool
+  l = log -n10 --pretty=format:'%C(yellow)%h%C(reset) %C(blue)%an%C(reset) %C(green)(%cr)%C(reset) \t %C(bold blue)%d%C(reset) %s'
 
 [diff]
   external = git_diff_wrapper
