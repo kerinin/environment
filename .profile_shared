@@ -103,3 +103,22 @@ function find_recent()
   find . -type f -printf '%T@ %p\n' | sort -k 1nr | sed 's/^[^ ]* //' | head -n "${1:-10}"
 }
 
+function compact()
+{
+  sed '/^$/d'
+}
+
+function tabcol()
+{
+  column -t -s$'\t'
+}
+
+function quantiles()
+{
+  R --vanilla --slave -e "options(width = 400); data=scan(pipe('cat /dev/stdin')); quantile(data, seq(0,1,0.1));"
+}
+
+function ecdf()
+{
+  R --vanilla --slave -e "options(width = 400); data=scan(pipe('cat /dev/stdin')); ecdf(data)($1);"
+}
