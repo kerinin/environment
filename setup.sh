@@ -6,7 +6,7 @@ command_exists () {
 }
 
 symlink_or_backup () {
-  if [ -L $1 ] && [ "(readlink $1)"==$2 ]; then
+  if [ -L $1 ] && [ "(readlink $1)" == "$2" ]; then
     echo "$1 already setup"
   elif [ -L $1 ]; then
     echo "$1 exists, but points at $(readlink $1) - pointing at $2"
@@ -119,7 +119,7 @@ else
 fi
 
 echo "---> Setting login shell:"
-if [ $SHELL!=/bin/zsh ]; then 
+if [ "$SHELL" != "/bin/zsh" ]; then 
   echo "Changing shell from $SHELL to /bin/zsh - you may need to enter your password"
   sudo chsh -s /bin/zsh "$USER"
 else
