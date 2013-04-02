@@ -157,4 +157,3 @@ function ecdf()
   R --vanilla --slave -e "options(width = 400); data=scan(pipe('cat /dev/stdin')); ecdf(data)($1);"
 }
 
-export AWS_CREDENTIALS=~/work/aws_credentials.yml
