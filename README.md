@@ -6,54 +6,17 @@
 
 [gcc](http://github.com/kennethreitz/osx-gcc-installer/downloads) - required fro rbenv
 
-[Homebrew](http://mxcl.github.com/homebrew/)
-
-Brew install:
-
-* git
-* bash-completion
-* ack
-* mysql
-* redis
-* memcached
-* ruby-build
-* wget
-* qt
-
 [Solarized](http://ethanschoonover.com/solarized)
 
 [Inconsolata Font](http://leonardo-m.livejournal.com/77079.html)
 
 XCode - available from app store.  Make sure to install Console tools from the preferences menu
 
-[rbenv](https://github.com/sstephenson/rbenv)
- 
-[ruby-build](https://github.com/sstephenson/ruby-build)
-
-[rbenv-vars](https://github.com/sstephenson/rbenv-vars)
-
-
 ## environment
 
 ``` sh
-cd ~/
-git clone git@github.com:kerinin/environment.git
-cd ~/environment
-git submodule init
-git submodule update
-cd ~/
-
-ln -s environment/.ackrc ./
-ln -s environment/.byobu ./
-ln -s environment/.gemrc ./
-ln -s environment/.rbenv ./
-ln -s environment/.vim ./
-ln -s environment/.vimrc ./
-
-echo "source environment/.profile_ubuntu" >> ~/.bashrc
-echo "source environment/.profile_osx" >> ~/.bash_profile
+./environment/setup.sh
 ```
-
 
 ## Ruby
 
