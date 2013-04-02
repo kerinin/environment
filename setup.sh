@@ -83,16 +83,16 @@ else
 fi
 
 echo "---> Cloning zsh repo:"
-if ! [ -d ~/.oh_my_zsh ]; then
-  if git clone git@github.com:kerinin/oh-my-zsh.git ~/.oh_my_zsh; then
-    echo "Cloned oh_my_zsh repo WITH commit access"
+if ! [ -d ~/.oh-my-zsh ]; then
+  if git clone git@github.com:kerinin/oh-my-zsh.git ~/.oh-my-zsh; then
+    echo "Cloned oh-my-zsh repo WITH commit access"
   else
-    git clone git://github.com/kerinin/oh-my-zsh.git ~/.oh_my_zsh
-    echo "Clone oh_my_zsh WITHOUT commit access"
+    git clone git://github.com/kerinin/oh-my-zsh.git ~/.oh-my-zsh
+    echo "Clone oh-my-zsh WITHOUT commit access"
   fi
 else
-  echo "oh_my_zsh already cloned, fetching master"
-  cd .oh_my_zsh
+  echo "oh-my-zsh already cloned, fetching master"
+  cd .oh-my-zsh
   git pull
   cd ../
 fi
