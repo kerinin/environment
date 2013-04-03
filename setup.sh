@@ -6,7 +6,7 @@ command_exists () {
 }
 
 symlink_or_backup () {
-  if [ -L $1 ] && [ "$(readlink $1)" == "$2" ]; then
+  if [ -L $1 ] && [ "$(readlink $1)" = "$2" ]; then
     echo "$1 already setup"
   elif [ -L $1 ]; then
     echo "$1 exists, but points at $(readlink $1) - pointing at $2"
