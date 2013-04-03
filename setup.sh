@@ -12,6 +12,10 @@ symlink_or_backup () {
     echo "$1 exists, but points at $(readlink $1) - pointing at $2"
     rm $1
     ln -s $2 $1
+  elif [ -d $1 ]; then
+    echo "$1 exists and is a directory - moving to $1_back and symlinking to $2"
+    mv "$1" "$1_back"
+    ln -s $2 $1
   elif [ -f $1 ]; then
     echo "$1 exists and is a file - backing up to $1_back and symlinking to $2"
     mv "$1" "$1_back"
