@@ -130,3 +130,5 @@ else
   echo "login shell already zsh"
 fi
 
+source ~/.zshrc
+
