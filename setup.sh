@@ -42,7 +42,7 @@ install_stuff () {
 cd
 
 echo "---> Installing software:"
-if [ -n "$INSTALL" ] && echo $OSTYPE | grep -Fq darwin; then
+if [[ -n "$INSTALL" && $OSTYPE =~ darwin ]]; then
   install_stuff brew 'ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)"'
   install_stuff git 'brew install git'
   install_stuff mysql 'brew install mysql'
@@ -52,7 +52,7 @@ if [ -n "$INSTALL" ] && echo $OSTYPE | grep -Fq darwin; then
   install_stuff ruby-build 'brew install ruby-build'
   install_stuff wget 'brew install wget'
   install_stuff ag 'brew install the_silver_searcher'
-elif [ -n "$INSTALL" ] && echo $OSTYPE | grep -Fq linux; then
+elif [[ -n "$INSTALL" && $OSTYPE =~ linux ]]; then
   install_stuff git 'sudo apt-get install git'
   install_stuff mysql 'sudo apt-get install msyql'
   install_stuff redis 'sudo apt-get install redis'
@@ -114,9 +114,9 @@ if command_exists rbenv; then symlink_or_backup .rbenv environment/.rbenv; fi
 if command_exists vim; then symlink_or_backup .vim environment/.vim; symlink_or_backup .vimrc environment/.vimrc; fi
 
 echo "---> Setting up init scripts:"
-if echo $OSTYPE | grep -Fq darwin && ! grep -Fxq '. ~/environment/.profile_osx' ~/.zshrc; then
+if [[ $OSTYPE =~ darwin ]] && ! grep -q '^. ~/environment/.profile_osx' ~/.zshrc; then
   echo '. ~/environment/.profile_osx' >> ~/.zshrc
-elif echo $OSTYPE | grep -Fq linux && ! grep -Fxq '. ~/environment/.profile_profile' ~/.zshrc; then
+elif [[ $OSTYPE =~ linux ]] && ! grep -q '^. ~/environment/.profile_profile' ~/.zshrc; then
   echo '. ~/environment/.profile_ubuntu' >> ~/.zshrc
 else
   echo "Either I don't recognize your OS ($OSTYPE) or your init scripts are already in place"
