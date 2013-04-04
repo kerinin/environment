@@ -114,10 +114,10 @@ if command_exists rbenv; then symlink_or_backup .rbenv environment/.rbenv; fi
 if command_exists vim; then symlink_or_backup .vim environment/.vim; symlink_or_backup .vimrc environment/.vimrc; fi
 
 echo "---> Setting up init scripts:"
-if echo $OSTYPE | grep -Fq darwin && ! grep -Fxq "source ~/environment/.profile_osx" ~/.zshrc; then
-  echo "source ~/environment/.profile_osx" >> ~/.zshrc
-elif echo $OSTYPE | grep -Fq linux && ! grep -Fxq "source ~/environment/.profile_profile" ~/.zshrc; then
-  echo "source ~/environment/.profile_ubuntu" >> ~/.zshrc
+if echo $OSTYPE | grep -Fq darwin && ! grep -Fxq '. ~/environment/.profile_osx' ~/.zshrc; then
+  echo '. ~/environment/.profile_osx' >> ~/.zshrc
+elif echo $OSTYPE | grep -Fq linux && ! grep -Fxq '. ~/environment/.profile_profile' ~/.zshrc; then
+  echo '. ~/environment/.profile_ubuntu' >> ~/.zshrc
 else
   echo "Either I don't recognize your OS ($OSTYPE) or your init scripts are already in place"
 fi
@@ -130,5 +130,5 @@ else
   echo "login shell already zsh"
 fi
 
-source ~/.zshrc
+. ~/.zshrc
 
