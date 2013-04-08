@@ -133,6 +133,3 @@ if [ "$SHELL" != "/bin/zsh" ]; then
 else
   echo "login shell already zsh"
 fi
-
-. ~/.zshrc
-
