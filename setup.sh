@@ -1,3 +1,5 @@
+#! /usr/bin/env bash
+
 echo "SETTING UP ALL THE THINGS!!!"
 echo "SSH keys should already be installed in .ssh (if you're going to do that)"
 
@@ -42,7 +44,7 @@ install_stuff () {
 cd
 
 echo "---> Installing software:"
-if [ -n "$INSTALL" ] && echo $OSTYPE | grep -Fq darwin; then
+if [[ -n $INSTALL && `uname` == Darwin ]]; then
   install_stuff brew 'ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)"'
   install_stuff git 'brew install git'
   install_stuff mysql 'brew install mysql'
@@ -52,7 +54,7 @@ if [ -n "$INSTALL" ] && echo $OSTYPE | grep -Fq darwin; then
   install_stuff ruby-build 'brew install ruby-build'
   install_stuff wget 'brew install wget'
   install_stuff ag 'brew install the_silver_searcher'
-elif [ -n "$INSTALL" ] && echo $OSTYPE | grep -Fq linux; then
+elif [[ -n $INSTALL && `uname` == Linux ]]; then
   install_stuff git 'sudo apt-get install git'
   install_stuff mysql 'sudo apt-get install msyql'
   install_stuff redis 'sudo apt-get install redis'
@@ -63,7 +65,7 @@ elif [ -n "$INSTALL" ] && echo $OSTYPE | grep -Fq linux; then
   install_stuff ag 'sudo apt-get install -y automake pkg-config libpcre3-dev zlib1g-dev; git clone git://github.com/ggreer/the_silver_searcher.git; cd .the_silver_searcher; ./build.sh; sudo make install; cd'
   install_stuff zsh 'sudo apt-get install zsh'
 else
-  echo "Either I don't recognize your OS ($OSTYPE) or you didn't set \$INSTALL=Y - not trying to install stuff"
+  echo "Either I don't recognize your OS ($(uname)) or you didn't set \$INSTALL=Y - not trying to install stuff"
 fi
 
 if ! command_exists git; then
@@ -108,15 +110,17 @@ git submodule update
 cd
 
 echo "---> Symlinking environment:"
-if command_exists byobu; then symlink_or_backup .byobu environment/.byobu; fi
-if command_exists gem; then symlink_or_backup .gemrc environment/.gemrc; fi
-if command_exists rbenv; then symlink_or_backup .rbenv environment/.rbenv; fi
 if command_exists vim; then symlink_or_backup .vim environment/.vim; symlink_or_backup .vimrc environment/.vimrc; fi
+if command_exists rbenv; then symlink_or_backup .rbenv environment/.rbenv; fi
+if command_exists gem; then symlink_or_backup .gemrc environment/.gemrc; fi
+if [[ `uname` == Linux ]]; then
+  if command_exists byobu; then symlink_or_backup .byobu environment/.byobu; fi
+fi
 
 echo "---> Setting up init scripts:"
-if echo $OSTYPE | grep -Fq darwin && ! grep -Fxq "source ~/environment/.profile_osx" ~/.zshrc; then
+if [[ `uname` == Darwin ]] && ! grep -Fxq "source ~/environment/.profile_osx" ~/.zshrc; then
   echo "source ~/environment/.profile_osx" >> ~/.zshrc
-elif echo $OSTYPE | grep -Fq linux && ! grep -Fxq "source ~/environment/.profile_profile" ~/.zshrc; then
+elif [[ `uname` == Linux ]] && ! grep -Fxq "source ~/environment/.profile_ubuntu" ~/.zshrc; then
   echo "source ~/environment/.profile_ubuntu" >> ~/.zshrc
 else
   echo "Either I don't recognize your OS ($OSTYPE) or your init scripts are already in place"
