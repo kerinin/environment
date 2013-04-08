@@ -55,6 +55,8 @@ function self-insert-no-autoremove {
 zle -N self-insert-no-autoremove
 bindkey '|' self-insert-no-autoremove
 
+. ~/environment/z/z.sh
+
 command_exists () {
   type "$1" &> /dev/null ;
 }
@@ -127,6 +129,7 @@ alias be='bundle exec'
 alias bers='time bundle exec rspec --format Fuubar'
 alias bec='bundle exec cucumber'
 alias ber='bundle exec rails'
+if command_exists hub; then alias git=hub; if command_exists compdef; then compdef hub=git; fi; fi
 
 # Rubinius
 export RBX_ROOT=$HOME/.rbenv/versions/rbx-2.0.0-dev
@@ -169,3 +172,12 @@ function ecdf()
   R --vanilla --slave -e "options(width = 400); data=scan(pipe('cat /dev/stdin')); ecdf(data)($1);"
 }
 
+function awktab()
+{
+  FS="\t" OFS="\t" awk $@
+}
+
+function sorttab()
+{
+  sort -t$'\t' $@
+}
