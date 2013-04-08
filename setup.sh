@@ -122,7 +122,7 @@ fi
 echo "---> Setting up init scripts:"
 if [[ `uname` == Darwin ]] && ! grep -q "^. ~/environment/.profile_osx" ~/.zshrc; then
   echo '. ~/environment/.profile_osx' >> ~/.zshrc
-elif [[ `uname` == Linux ]] && ! grep -Fxq "^. ~/environment/.profile_ubuntu" ~/.zshrc; then
+elif [[ `uname` == Linux ]] && ! grep -q "^. ~/environment/.profile_ubuntu" ~/.zshrc; then
   echo '. ~/environment/.profile_ubuntu' >> ~/.zshrc
 else
   echo "Either I don't recognize your OS ($OSTYPE) or your init scripts are already in place"
