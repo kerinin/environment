@@ -1,9 +1,9 @@
-source ~/environment/.profile_shared
+. ~/environment/.profile_shared
 
 export JAVA_HOME=$(/usr/libexec/java_home)
 
 # GRC colors
-source "`brew --prefix`/etc/grc.bashrc"
+. "`brew --prefix`/etc/grc.bashrc"
 alias ctags="`brew --prefix`/bin/ctags"
 
 export PYTHONPATH=/usr/local/lib/python2.7/site-packages:$PYTHONPATH

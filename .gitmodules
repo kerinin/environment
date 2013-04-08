@@ -52,3 +52,6 @@
 [submodule ".vim/bundle/powerline"]
 	path = .vim/bundle/powerline
 	url = git://github.com/Lokaltog/vim-powerline.git
+[submodule "z"]
+	path = z
+	url = git://github.com/rupa/z.git

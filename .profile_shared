@@ -36,12 +36,26 @@ plugins=(git vi-mode)
 
 source $ZSH/oh-my-zsh.sh
 
+# Enable Esc-v to edit command line
+autoload -U edit-command-line
+zle -N edit-command-line
+bindkey -M vicmd v edit-command-line
+
+# Vim-mode goodies
 bindkey "^?" backward-delete-char
 bindkey "^W" backward-kill-word 
 bindkey "^H" backward-delete-char      # Control-h also deletes the previous char
 bindkey "^U" kill-line  
-
 KEYTIMEOUT=1
+
+# Prevent trailing space being stripped after tab-completion
+function self-insert-no-autoremove {
+  LBUFFER="$LBUFFER$KEYS"
+}
+zle -N self-insert-no-autoremove
+bindkey '|' self-insert-no-autoremove
+
+. ~/environment/z/z.sh
 
 command_exists () {
   type "$1" &> /dev/null ;
@@ -115,6 +129,7 @@ alias be='bundle exec'
 alias bers='time bundle exec rspec --format Fuubar'
 alias bec='bundle exec cucumber'
 alias ber='bundle exec rails'
+if command_exists hub; then alias git=hub; if command_exists compdef; then compdef hub=git; fi; fi
 
 # Rubinius
 alias commas="sed -e :a -e 's/\(.*[0-9]\)\([0-9]\{3\}\)/\1,\2/;ta'"
@@ -154,3 +169,12 @@ function ecdf()
   R --vanilla --slave -e "options(width = 400); data=scan(pipe('cat /dev/stdin')); ecdf(data)($1);"
 }
 
+function awktab()
+{
+  FS="\t" OFS="\t" awk $@
+}
+
+function sorttab()
+{
+  sort -t$'\t' $@
+}

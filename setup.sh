@@ -54,6 +54,7 @@ if [[ -n $INSTALL && `uname` == Darwin ]]; then
   install_stuff ruby-build 'brew install ruby-build'
   install_stuff wget 'brew install wget'
   install_stuff ag 'brew install the_silver_searcher'
+  install_stuff hub 'brew install hub && eval "$(hub alias -s)"'
 elif [[ -n $INSTALL && `uname` == Linux ]]; then
   install_stuff git 'sudo apt-get install git'
   install_stuff mysql 'sudo apt-get install msyql'
@@ -64,6 +65,7 @@ elif [[ -n $INSTALL && `uname` == Linux ]]; then
   install_stuff wget 'sudo apt-get  install wget'
   install_stuff ag 'sudo apt-get install -y automake pkg-config libpcre3-dev zlib1g-dev; git clone git://github.com/ggreer/the_silver_searcher.git; cd .the_silver_searcher; ./build.sh; sudo make install; cd'
   install_stuff zsh 'sudo apt-get install zsh'
+  install_stuff hub 'curl http://defunkt.io/hub/standalone -sLo ~/bin/hub && chmod +x ~/bin/hub'
 else
   echo "Either I don't recognize your OS ($(uname)) or you didn't set \$INSTALL=Y - not trying to install stuff"
 fi
@@ -118,10 +120,10 @@ if [[ `uname` == Linux ]]; then
 fi
 
 echo "---> Setting up init scripts:"
-if [[ `uname` == Darwin ]] && ! grep -Fxq "source ~/environment/.profile_osx" ~/.zshrc; then
-  echo "source ~/environment/.profile_osx" >> ~/.zshrc
-elif [[ `uname` == Linux ]] && ! grep -Fxq "source ~/environment/.profile_ubuntu" ~/.zshrc; then
-  echo "source ~/environment/.profile_ubuntu" >> ~/.zshrc
+if [[ `uname` == Darwin ]] && ! grep -q "^. ~/environment/.profile_osx" ~/.zshrc; then
+  echo '. ~/environment/.profile_osx' >> ~/.zshrc
+elif [[ `uname` == Linux ]] && ! grep -Fxq "^. ~/environment/.profile_ubuntu" ~/.zshrc; then
+  echo '. ~/environment/.profile_ubuntu' >> ~/.zshrc
 else
   echo "Either I don't recognize your OS ($OSTYPE) or your init scripts are already in place"
 fi
@@ -133,4 +135,6 @@ if [ "$SHELL" != "/bin/zsh" ]; then
 else
   echo "login shell already zsh"
 fi
+
+. ~/.zshrc
 
