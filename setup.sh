@@ -89,16 +89,16 @@ else
 fi
 
 echo "---> Cloning zsh repo:"
-if ! [ -d ~/.zpretzo ]; then
-  if git clone git@github.com:kerinin/pretzo.git ~/.zpretzo; then
-    echo "Cloned zpretzo repo WITH commit access"
+if ! [ -d ~/.zprezto ]; then
+  if git clone git@github.com:kerinin/prezto.git ~/.zprezto; then
+    echo "Cloned zprezto repo WITH commit access"
   else
-    git clone git://github.com/kerinin/pretzo.git ~/.zpretzo
-    echo "Clone zpretzo WITHOUT commit access"
+    git clone git://github.com/kerinin/prezto.git ~/.zprezto
+    echo "Clone zprezto WITHOUT commit access"
   fi
 else
-  echo "zpretzo already cloned, fetching master"
-  cd .zpretzo
+  echo "zprezto already cloned, fetching master"
+  cd .zprezto
   git pull
   cd ../
 fi
@@ -110,12 +110,12 @@ git submodule update
 cd
 
 echo "---> Symlinking environment:"
-symlink_or_backup .zlogin .zpretzo/runcoms/zlogin
-symlink_or_backup .zlogout .zpretzo/runcoms/zlogout
-symlink_or_backup .zpretzorc .zpretzo/runcoms/zeptorc
-symlink_or_backup .zprofile .zpretzo/runcoms/zprofile
-symlink_or_backup .zshenv .zpretzo/runcoms/zshenv
-symlink_or_backup .zshrc .zpretzo/runcoms/zshrc
+symlink_or_backup .zlogin .zprezto/runcoms/zlogin
+symlink_or_backup .zlogout .zprezto/runcoms/zlogout
+symlink_or_backup .zpreztorc .zprezto/runcoms/zeptorc
+symlink_or_backup .zprofile .zprezto/runcoms/zprofile
+symlink_or_backup .zshenv .zprezto/runcoms/zshenv
+symlink_or_backup .zshrc .zprezto/runcoms/zshrc
 if command_exists vim; then symlink_or_backup .vim environment/.vim; symlink_or_backup .vimrc environment/.vimrc; fi
 if command_exists rbenv; then symlink_or_backup .rbenv environment/.rbenv; fi
 if command_exists gem; then symlink_or_backup .gemrc environment/.gemrc; fi
