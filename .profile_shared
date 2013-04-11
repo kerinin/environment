@@ -178,4 +178,4 @@ function sorttab()
   sort -t$'\t' $@
 }
 
-source ~/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/environment/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
