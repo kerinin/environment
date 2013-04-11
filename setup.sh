@@ -89,16 +89,16 @@ else
 fi
 
 echo "---> Cloning zsh repo:"
-if ! [ -d ~/.oh-my-zsh ]; then
-  if git clone git@github.com:kerinin/oh-my-zsh.git ~/.oh-my-zsh; then
-    echo "Cloned oh-my-zsh repo WITH commit access"
+if ! [ -d ~/.zpretzo ]; then
+  if git clone git@github.com:kerinin/pretzo.git ~/.zpretzo; then
+    echo "Cloned zpretzo repo WITH commit access"
   else
-    git clone git://github.com/kerinin/oh-my-zsh.git ~/.oh-my-zsh
-    echo "Clone oh-my-zsh WITHOUT commit access"
+    git clone git://github.com/kerinin/pretzo.git ~/.zpretzo
+    echo "Clone zpretzo WITHOUT commit access"
   fi
 else
-  echo "oh-my-zsh already cloned, fetching master"
-  cd .oh-my-zsh
+  echo "zpretzo already cloned, fetching master"
+  cd .zpretzo
   git pull
   cd ../
 fi
@@ -110,6 +110,12 @@ git submodule update
 cd
 
 echo "---> Symlinking environment:"
+symlink_or_backup .zlogin .zpretzo/runcoms/zlogin
+symlink_or_backup .zlogout .zpretzo/runcoms/zlogout
+symlink_or_backup .zpretzorc .zpretzo/runcoms/zeptorc
+symlink_or_backup .zprofile .zpretzo/runcoms/zprofile
+symlink_or_backup .zshenv .zpretzo/runcoms/zshenv
+symlink_or_backup .zshrc .zpretzo/runcoms/zshrc
 if command_exists vim; then symlink_or_backup .vim environment/.vim; symlink_or_backup .vimrc environment/.vimrc; fi
 if command_exists rbenv; then symlink_or_backup .rbenv environment/.rbenv; fi
 if command_exists gem; then symlink_or_backup .gemrc environment/.gemrc; fi
