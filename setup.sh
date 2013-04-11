@@ -112,7 +112,7 @@ cd
 echo "---> Symlinking environment:"
 symlink_or_backup .zlogin .zprezto/runcoms/zlogin
 symlink_or_backup .zlogout .zprezto/runcoms/zlogout
-symlink_or_backup .zpreztorc .zprezto/runcoms/zeptorc
+symlink_or_backup .zpreztorc .zprezto/runcoms/zpreztorc
 symlink_or_backup .zprofile .zprezto/runcoms/zprofile
 symlink_or_backup .zshenv .zprezto/runcoms/zshenv
 if command_exists vim; then symlink_or_backup .vim environment/.vim; symlink_or_backup .vimrc environment/.vimrc; fi
