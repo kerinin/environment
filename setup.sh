@@ -115,7 +115,6 @@ symlink_or_backup .zlogout .zprezto/runcoms/zlogout
 symlink_or_backup .zpreztorc .zprezto/runcoms/zeptorc
 symlink_or_backup .zprofile .zprezto/runcoms/zprofile
 symlink_or_backup .zshenv .zprezto/runcoms/zshenv
-symlink_or_backup .zshrc .zprezto/runcoms/zshrc
 if command_exists vim; then symlink_or_backup .vim environment/.vim; symlink_or_backup .vimrc environment/.vimrc; fi
 if command_exists rbenv; then symlink_or_backup .rbenv environment/.rbenv; fi
 if command_exists gem; then symlink_or_backup .gemrc environment/.gemrc; fi
