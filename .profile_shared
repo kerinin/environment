@@ -184,4 +184,9 @@ function sorttab()
   sort -t$'\t' $@
 }
 
+function clean_spaces()
+{
+  gsed -r 's/\s+/\t/g' | gsed -r 's/^\s+//g'
+}
+
 source ~/environment/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
