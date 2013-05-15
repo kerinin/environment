@@ -70,3 +70,6 @@ au BufRead,BufNewFile *.ino set filetype=arduino
 
 " Always display the path
 set laststatus=2
+
+" Turn on paren coloring
+au VimEnter * RainbowParenthesesToggle
