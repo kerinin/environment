@@ -34,7 +34,7 @@ nmap <C-l> <C-w>l
 nmap <silent> <leader>n :NERDTreeToggle<cr>
 let g:NERDTreeWinSize = 40
 
-set background=dark
+set background=light
 silent! colorscheme solarized
 set number
 set nowrap
@@ -73,3 +73,13 @@ set laststatus=2
 
 " Turn on paren coloring
 au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
+let g:rbpt_max = 8
+
+nmap <Leader>a= :Tabularize /=<CR>
+vmap <Leader>a= :Tabularize /=<CR>
+nmap <Leader>a' :Tabularize /^[^"]*\zs<CR>
+vmap <Leader>a' :Tabularize /^[^"]*\zs<CR>
+
