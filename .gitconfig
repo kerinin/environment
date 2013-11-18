@@ -1,5 +1,6 @@
 [core]
   editor = vim
+  attributesfile = ~/.gitattributes
 
 [user]
   name = Ryan Michael

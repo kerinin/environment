@@ -83,3 +83,6 @@ vmap <Leader>a= :Tabularize /=<CR>
 nmap <Leader>a' :Tabularize /^[^"]*\zs<CR>
 vmap <Leader>a' :Tabularize /^[^"]*\zs<CR>
 
+highlight Comment cterm=italic
+let g:Powerline_symbols = 'fancy'
+

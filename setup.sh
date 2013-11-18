@@ -138,3 +138,11 @@ if [ "$SHELL" != "/bin/zsh" ]; then
 else
   echo "login shell already zsh"
 fi
+
+if [[ `uname` == Darwin ]] && ! grep -q "^. ~/environment/.profile_osx" ~/.zshrc; then
+  # See https://gist.github.com/sos4nt/3187620 for more info about this
+  echo "---> Patching terminfo:"
+  tic ~/environment/xterm-256color.terminfo
+fi
+
+
