@@ -78,11 +78,12 @@ au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
 let g:rbpt_max = 8
 
-nmap <Leader>a= :Tabularize /=<CR>
-vmap <Leader>a= :Tabularize /=<CR>
-nmap <Leader>a' :Tabularize /^[^"]*\zs<CR>
-vmap <Leader>a' :Tabularize /^[^"]*\zs<CR>
-
 highlight Comment cterm=italic
+
 let g:Powerline_symbols = 'fancy'
 
+" Set cursor based on insert/select mode
+let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+
+let g:markdown_fenced_languages = ['ruby', 'sh', 'javascript']
