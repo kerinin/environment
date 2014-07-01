@@ -131,7 +131,7 @@ alias gfp='git fetch --prune'
 
 alias bi='bundle install'
 alias be='bundle exec'
-alias bers='time bundle exec rspec --format Fuubar'
+alias bers='time bundle exec rspec'
 alias bec='bundle exec cucumber'
 alias ber='bundle exec rails'
 # if command_exists hub; then alias git=hub; if command_exists compdef; then compdef hub=git; fi; fi

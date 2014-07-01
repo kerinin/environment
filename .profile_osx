@@ -1,10 +1,10 @@
 . ~/environment/.profile_shared
 
-export JAVA_HOME=$(/usr/libexec/java_home)
+export JAVA_HOME="/Library/Internet Plug-Ins/JavaAppletPlugin.plugin/Contents/Home"
 
 # GRC colors
-. "`brew --prefix`/etc/grc.bashrc"
-alias ctags="`brew --prefix`/bin/ctags"
+# . "`brew --prefix`/etc/grc.bashrc"
+# alias ctags="`brew --prefix`/bin/ctags"
 
 export PYTHONPATH=/usr/local/lib/python2.7/site-packages:$PYTHONPATH
 export PATH=/Library/Frameworks/GDAL.framework/Programs:$PATH

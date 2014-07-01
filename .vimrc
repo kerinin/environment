@@ -60,6 +60,7 @@ set mouse=a
 augroup filetypedetect 
   au BufNewFile,BufRead *.pig set filetype=pig syntax=pig 
 augroup END
+au Filetype markdown setlocal spell tw=80
 
 au WinLeave * set nocursorline nocursorcolumn
 au WinEnter * set cursorline cursorcolumn
@@ -86,4 +87,7 @@ let g:Powerline_symbols = 'fancy'
 let &t_SI = "\<Esc>]50;CursorShape=1\x7"
 let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 
-let g:markdown_fenced_languages = ['ruby', 'sh', 'javascript']
+let g:markdown_fenced_languages = ['ruby', 'sh', 'javascript', 'lisp']
+
+" Show the 80-character margin
+:set colorcolumn=80
