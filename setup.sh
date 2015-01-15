@@ -111,6 +111,9 @@ git submodule update
 cd
 
 echo "---> Symlinking environment:"
+symlink_or_backup .gitconfig environment/.gitconfig
+symlink_or_backup .gemrc environment/.gemrc
+symlink_or_backup .ackrc environment/.ackrc
 symlink_or_backup .zlogin .zprezto/runcoms/zlogin
 symlink_or_backup .zlogout .zprezto/runcoms/zlogout
 symlink_or_backup .zpreztorc .zprezto/runcoms/zpreztorc
@@ -132,18 +135,18 @@ else
   echo "Either I don't recognize your OS ($OSTYPE) or your init scripts are already in place"
 fi
 
-echo "---> Setting login shell:"
-if [ "$SHELL" != "/bin/zsh" ]; then 
-  echo "Changing shell from $SHELL to /bin/zsh - you may need to enter your password"
-  sudo chsh -s /bin/zsh "$USER"
-else
-  echo "login shell already zsh"
-fi
+# echo "---> Setting login shell:"
+# if [ "$SHELL" != "/bin/zsh" ]; then 
+#   echo "Changing shell from $SHELL to /bin/zsh - you may need to enter your password"
+#   sudo chsh -s /bin/zsh "$USER"
+# else
+#   echo "login shell already zsh"
+# fi
 
-if [[ `uname` == Darwin ]] && ! grep -q "^. ~/environment/.profile_osx" ~/.zshrc; then
-  # See https://gist.github.com/sos4nt/3187620 for more info about this
-  echo "---> Patching terminfo:"
-  tic ~/environment/xterm-256color.terminfo
-fi
+# if [[ `uname` == Darwin ]] && ! grep -q "^. ~/environment/.profile_osx" ~/.zshrc; then
+#  # See https://gist.github.com/sos4nt/3187620 for more info about this
+#   echo "---> Patching terminfo:"
+#   tic ~/environment/xterm-256color.terminfo
+# fi
 
 
