@@ -73,15 +73,15 @@ au BufRead,BufNewFile *.ino set filetype=arduino
 set laststatus=2
 
 " Turn on paren coloring
-au VimEnter * RainbowParenthesesToggle
-au Syntax * RainbowParenthesesLoadRound
-au Syntax * RainbowParenthesesLoadSquare
-au Syntax * RainbowParenthesesLoadBraces
-let g:rbpt_max = 8
+" au VimEnter * RainbowParenthesesToggle
+" au Syntax * RainbowParenthesesLoadRound
+" au Syntax * RainbowParenthesesLoadSquare
+" au Syntax * RainbowParenthesesLoadBraces
+" let g:rbpt_max = 8
 
 highlight Comment cterm=italic
 
-let g:Powerline_symbols = 'fancy'
+" let g:Powerline_symbols = 'fancy'
 
 " Set cursor based on insert/select mode
 let &t_SI = "\<Esc>]50;CursorShape=1\x7"
@@ -91,3 +91,16 @@ let g:markdown_fenced_languages = ['ruby', 'sh', 'javascript', 'lisp']
 
 " Show the 80-character margin
 :set colorcolumn=80
+
+" Go
+let g:go_fmt_autosave = 1
+let g:go_fmt_fail_silently = 1
+let g:go_fmt_command = "goimports"
+au BufNewFile,BufRead *.go setlocal noet ts=4 sw=4 sts=4
+au FileType php setl sw=4 sts=4 et
+
+" add jbuilder syntax highlighting
+au BufNewFile,BufRead *.jbuilder set ft=ruby
+
+" tagbar
+nmap <F8> :TagbarToggle<CR>
