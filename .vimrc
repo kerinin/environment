@@ -35,7 +35,9 @@ nmap <silent> <leader>n :NERDTreeToggle<cr>
 let g:NERDTreeWinSize = 40
 
 set background=dark
-silent! colorscheme solarized
+" set background=light
+" silent! colorscheme solarized
+colorscheme base16-default
 set number
 set nowrap
 set linebreak
@@ -79,7 +81,7 @@ au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
 let g:rbpt_max = 8
 
-highlight Comment cterm=italic
+" highlight Comment cterm=italic
 
 let g:Powerline_symbols = 'fancy'
 
@@ -91,3 +93,6 @@ let g:markdown_fenced_languages = ['ruby', 'sh', 'javascript', 'lisp']
 
 " Show the 80-character margin
 :set colorcolumn=80
+
+" Fix clipboard for OSX (at least)
+" set clipboard=unnamed

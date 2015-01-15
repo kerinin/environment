@@ -54,6 +54,7 @@ if [[ -n $INSTALL && `uname` == Darwin ]]; then
   install_stuff ruby-build 'brew install ruby-build'
   install_stuff wget 'brew install wget'
   install_stuff ag 'brew install the_silver_searcher'
+  brew install vim
 elif [[ -n $INSTALL && `uname` == Linux ]]; then
   install_stuff git 'sudo apt-get install git'
   install_stuff mysql 'sudo apt-get install msyql'
