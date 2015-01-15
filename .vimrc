@@ -94,8 +94,6 @@ let g:markdown_fenced_languages = ['ruby', 'sh', 'javascript', 'lisp']
 " Show the 80-character margin
 :set colorcolumn=80
 
-" Fix clipboard for OSX (at least)
-" set clipboard=unnamed
 " Go
 let g:go_fmt_autosave = 1
 let g:go_fmt_fail_silently = 1
