@@ -190,3 +190,11 @@ function clean_spaces()
 }
 
 source ~/environment/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+export JRUBY_OPTS="-Xcompile.invokedynamic=false -J-XX:+TieredCompilation -J-XX:TieredStopAtLevel=1 -J-noverify -Xcompile.mode=OFF"
+
+function clean_docker()
+{
+  docker rm $(docker ps -a -q)
+  docker rmi $(docker images | grep "^<none>" | awk '{print $3}')
+}

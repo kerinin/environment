@@ -1,6 +1,6 @@
 . ~/environment/.profile_shared
 
-export JAVA_HOME="/Library/Internet Plug-Ins/JavaAppletPlugin.plugin/Contents/Home"
+export JAVA_HOME=$(/usr/libexec/java_home)
 
 # GRC colors
 # . "`brew --prefix`/etc/grc.bashrc"
@@ -8,3 +8,11 @@ export JAVA_HOME="/Library/Internet Plug-Ins/JavaAppletPlugin.plugin/Contents/Ho
 
 export PYTHONPATH=/usr/local/lib/python2.7/site-packages:$PYTHONPATH
 export PATH=/Library/Frameworks/GDAL.framework/Programs:$PATH
+
+export GOPATH=~/go
+export PATH=/usr/local/go/bin:$PATH
+export PATH=~/go/bin:$PATH
+
+export DOCKER_HOST=tcp://192.168.59.103:2376
+export DOCKER_CERT_PATH=/Users/rmichael/.boot2docker/certs/boot2docker-vm
+export DOCKER_TLS_VERIFY=1
