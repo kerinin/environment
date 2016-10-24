@@ -12,10 +12,36 @@ export PATH=/Library/Frameworks/GDAL.framework/Programs:$PATH
 export GOPATH=~/go
 export PATH=/usr/local/go/bin:$PATH
 export PATH=~/go/bin:$PATH
+export PATH=~/environment/bin:$PATH
 
-export DOCKER_HOST=tcp://192.168.59.103:2376
-export DOCKER_CERT_PATH=/Users/rmichael/.boot2docker/certs/boot2docker-vm
-export DOCKER_TLS_VERIFY=1
+# export DOCKER_HOST=tcp://192.168.59.103:2376
+# export DOCKER_CERT_PATH=/Users/rmichael/.boot2docker/certs/boot2docker-vm
+# export DOCKER_TLS_VERIFY=1
+# eval "$(docker-machine env default)"
 
 export EC2_HOME=/usr/local/ec2/ec2-api-tools-1.7.3.0
 export PATH=$PATH:$EC2_HOME/bin 
+
+# Base16 Shell
+BASE16_SHELL="$HOME/.config/base16-shell/base16-eighties.dark.sh"
+[[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
+
+# eval "$(rbenv init -)"
+
+# export KSP="/Users/rmichael/Library/Application Support/Steam/steamapps/common/Kerbal Space Program/saves/career!"
+
+function kubit {
+  if [[ -a ~/.kubit.pid ]]; then
+    kill "$(cat ~/.kubit.pid)"
+    rm -f ~/.kubit.pid
+  fi
+
+  trap "rm ~/.kubit.pid; exit" EXIT SIGQUIT SIGINT SIGSTOP SIGTERM ERR
+  echo $$ > ~/.kubit.pid
+  ssh -N bastion-vpc.us-east-1.context.io -L 8080:kube-master.us-east-1.context.io:8080
+}
+
+function kube {
+  ssh -f -o ExitOnForwardFailure=yes -L8080:kube-master.us-east-1.context.io:8080 bastion-vpc.us-east-1.context.io sleep .2
+  kubectl $@
+}

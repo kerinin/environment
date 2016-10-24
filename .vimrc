@@ -5,6 +5,9 @@ filetype off                  " required
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
+" Access colors present in 256 colorspace
+let base16colorspace=256
+
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 
@@ -38,6 +41,12 @@ Plugin 'tomtom/tcomment_vim'
 Plugin 'kana/vim-textobj-user'
 Plugin 'fatih/vim-go'
 Plugin 'ingydotnet/yaml-vim'
+Plugin 'uarun/vim-protobuf'
+Plugin 'markcornick/vim-terraform'
+Plugin 'elubow/cql-vim'
+Plugin 'Chiel92/vim-autoformat'
+Plugin 'dcharbon/vim-flatbuffers'
+Plugin 'cstrahan/vim-capnp'
 
 
 " All of your Plugins must be added before the following line
@@ -95,7 +104,7 @@ let g:NERDTreeWinSize = 40
 set background=dark
 " set background=light
 " silent! colorscheme solarized
-colorscheme base16-default
+colorscheme base16-default-dark
 set number
 set nowrap
 set linebreak
@@ -171,3 +180,10 @@ set diffopt+=vertical
 " go stuff
 set rtp+=$GOPATH/src/github.com/golang/lint/misc/vim
 autocmd BufWritePost,FileWritePost *.go execute 'Lint' | cwindow
+au Filetype go nnoremap <leader>g :vsplit <CR>:exe "GoDef"<CR>
+au Filetype go nnoremap <leader>f :exe "GoDef"<CR>
+
+" rust stuff
+" let g:formatdef_rustfmt = '"rustfmt"'
+" let g:formatters_rust = ['rustfmt']
+" au BufWrite *.rs :Autoformat
