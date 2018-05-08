@@ -47,21 +47,11 @@ echo "---> Installing software:"
 if [[ -n $INSTALL && `uname` == Darwin ]]; then
   install_stuff brew 'ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)"'
   install_stuff git 'brew install git'
-  install_stuff mysql 'brew install mysql'
-  install_stuff redis-server 'brew install redis'
-  install_stuff memcached 'brew install memcached'
-  install_stuff rbenv 'brew install rbenv'
-  install_stuff ruby-build 'brew install ruby-build'
   install_stuff wget 'brew install wget'
   install_stuff ag 'brew install the_silver_searcher'
   brew install vim && sudo mv /usr/bin/vim /usr/bin/vim.apple && sudo ln -s /usr/local/bin/vim /usr/bin/vim
 elif [[ -n $INSTALL && `uname` == Linux ]]; then
   install_stuff git 'sudo apt-get install git'
-  install_stuff mysql 'sudo apt-get install msyql'
-  install_stuff redis 'sudo apt-get install redis'
-  install_stuff memcached 'sudo apt-get install memcached'
-  install_stuff rbenv 'sudo apt-get install rbenv'
-  install_stuff ruby-build 'sudo apt-get install ruby-build'
   install_stuff wget 'sudo apt-get  install wget'
   install_stuff ag 'sudo apt-get install -y automake pkg-config libpcre3-dev zlib1g-dev; git clone git://github.com/ggreer/the_silver_searcher.git; cd .the_silver_searcher; ./build.sh; sudo make install; cd'
   install_stuff zsh 'sudo apt-get install zsh'
@@ -112,7 +102,6 @@ cd
 
 echo "---> Symlinking environment:"
 symlink_or_backup .gitconfig environment/.gitconfig
-symlink_or_backup .gemrc environment/.gemrc
 symlink_or_backup .ackrc environment/.ackrc
 symlink_or_backup .zlogin .zprezto/runcoms/zlogin
 symlink_or_backup .zlogout .zprezto/runcoms/zlogout
@@ -120,8 +109,6 @@ symlink_or_backup .zpreztorc .zprezto/runcoms/zpreztorc
 symlink_or_backup .zprofile .zprezto/runcoms/zprofile
 symlink_or_backup .zshenv .zprezto/runcoms/zshenv
 if command_exists vim; then symlink_or_backup .vim environment/.vim; symlink_or_backup .vimrc environment/.vimrc; fi
-if command_exists rbenv; then symlink_or_backup .rbenv environment/.rbenv; fi
-if command_exists gem; then symlink_or_backup .gemrc environment/.gemrc; fi
 if [[ `uname` == Linux ]]; then
   if command_exists byobu; then symlink_or_backup .byobu environment/.byobu; fi
 fi
@@ -135,13 +122,13 @@ else
   echo "Either I don't recognize your OS ($OSTYPE) or your init scripts are already in place"
 fi
 
-# echo "---> Setting login shell:"
-# if [ "$SHELL" != "/bin/zsh" ]; then 
-#   echo "Changing shell from $SHELL to /bin/zsh - you may need to enter your password"
-#   sudo chsh -s /bin/zsh "$USER"
-# else
-#   echo "login shell already zsh"
-# fi
+echo "---> Setting login shell:"
+if [ "$SHELL" != "/bin/zsh" ]; then 
+  echo "Changing shell from $SHELL to /bin/zsh - you may need to enter your password"
+  sudo chsh -s /bin/zsh "$USER"
+else
+  echo "login shell already zsh"
+fi
 
 # if [[ `uname` == Darwin ]] && ! grep -q "^. ~/environment/.profile_osx" ~/.zshrc; then
 #  # See https://gist.github.com/sos4nt/3187620 for more info about this
