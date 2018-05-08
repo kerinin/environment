@@ -200,3 +200,18 @@ function clean_docker()
   docker rmi $(docker images -q -f dangling=true)
   docker run -v /var/run/docker.sock:/var/run/docker.sock -v /var/lib/docker:/var/lib/docker --rm martin/docker-cleanup-volumes
 }
+
+function bb()
+{
+  bazel build ...
+}
+
+function bt()
+{
+  bazel test --test_tag_filters=-docker-compose ...
+}
+
+function gzl()
+{
+  gazelle -external vendored -build_tags linux,amd64,darwin
+}

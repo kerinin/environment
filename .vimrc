@@ -47,6 +47,9 @@ Plugin 'elubow/cql-vim'
 Plugin 'Chiel92/vim-autoformat'
 Plugin 'dcharbon/vim-flatbuffers'
 Plugin 'cstrahan/vim-capnp'
+Plugin 'vim-scripts/indentpython.vim'
+Plugin 'vim-scripts/groovyindent-unix'
+Plugin 'djoshea/vim-autoread'
 
 
 " All of your Plugins must be added before the following line
@@ -104,7 +107,10 @@ let g:NERDTreeWinSize = 40
 set background=dark
 " set background=light
 " silent! colorscheme solarized
-colorscheme base16-default-dark
+if filereadable(expand("~/.vimrc_background"))
+  let base16colorspace=256
+  source ~/.vimrc_background
+endif
 set number
 set nowrap
 set linebreak
@@ -187,3 +193,12 @@ au Filetype go nnoremap <leader>f :exe "GoDef"<CR>
 " let g:formatdef_rustfmt = '"rustfmt"'
 " let g:formatters_rust = ['rustfmt']
 " au BufWrite *.rs :Autoformat
+
+" python stuff
+au BufNewFile,BufRead *.py set expandtab autoindent tabstop=4 softtabstop=4 shiftwidth=4 textwidth=79 fileformat=unix
+
+" Jenkinsfiles
+au BufNewFile,BufRead Jenkinsfile setf groovy
+
+au BufNewFile,BufRead BUILD      setf bzl
+au BufNewFile,BufRead BUILD.bazel   setf bzl
