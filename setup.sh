@@ -94,6 +94,13 @@ else
   cd ../
 fi
 
+echo "---> Cloning base16-shell repo:"
+if ! [ -d ~/.config/base16-shell ]; then
+  git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell;
+else
+  echo "base16-shell already cloned"
+fi
+
 echo "--> Setting up git submodules:"
 cd environment
 git submodule init

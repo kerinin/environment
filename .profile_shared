@@ -72,9 +72,6 @@ if command_exists rbenv ; then
   eval "$(rbenv init -)"
 fi
 
-# OIB shortcuts
-alias oib_jenkins='ssh -l ubuntu -L8080:localhost:8080 ubuntu@ec2-50-17-93-145.compute-1.amazonaws.com'
-
 # Current branch
 function gcb() {
 git branch | grep '^\*' | cut -c3-
@@ -190,8 +187,6 @@ function clean_spaces()
 }
 
 source ~/environment/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-export JRUBY_OPTS="-Xcompile.invokedynamic=false -J-XX:+TieredCompilation -J-XX:TieredStopAtLevel=1 -J-noverify -Xcompile.mode=OFF"
 
 function clean_docker()
 {

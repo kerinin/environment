@@ -50,6 +50,8 @@ Plugin 'cstrahan/vim-capnp'
 Plugin 'vim-scripts/indentpython.vim'
 Plugin 'vim-scripts/groovyindent-unix'
 Plugin 'djoshea/vim-autoread'
+Plugin 'google/vim-maktaba'
+Plugin 'bazelbuild/vim-bazel'
 
 
 " All of your Plugins must be added before the following line
@@ -200,5 +202,6 @@ au BufNewFile,BufRead *.py set expandtab autoindent tabstop=4 softtabstop=4 shif
 " Jenkinsfiles
 au BufNewFile,BufRead Jenkinsfile setf groovy
 
-au BufNewFile,BufRead BUILD      setf bzl
-au BufNewFile,BufRead BUILD.bazel   setf bzl
+colorscheme base16-default-dark
+
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
