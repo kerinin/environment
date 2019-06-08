@@ -49,3 +49,4 @@ alias kubtst1="source ${HOME}/.kube/kubtst1/env && ${HOME}/.kube/bin/kubectl-con
 alias cio="source ${HOME}/.kube/cio/env && ${HOME}/.kube/bin/kubectl-config.sh cio"
 
 PATH=$PATH:$HOME/.kube/bin/
+export KUBECONFIG=$HOME/.kube/config

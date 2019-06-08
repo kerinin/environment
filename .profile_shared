@@ -100,6 +100,22 @@ gfb ()
   fi
 }
 
+# Finish all merged branches
+gfbs ()
+{
+  git checkout master && git pull --prune
+
+  for branch in $(git branch --merged | egrep -v "(^\*|master|dev)"); do
+    if [[ $1 == '--force' || -z `git branch --no-merged master | grep $branch` ]]
+    then
+        git branch -d $branch && git push origin :$branch
+    else
+        echo "Hey, man, $branch isn't merged yet!"
+        git checkout $branch
+    fi
+  done
+}
+
 function gsq()
 {
   start=`gch`
@@ -206,7 +222,19 @@ function bt()
   bazel test --test_tag_filters=-docker-compose ...
 }
 
-function gzl()
+function brg()
 {
-  gazelle -external vendored -build_tags linux,amd64,darwin
+  bazel run //:gazelle
+}
+
+alias ad="aquaduck"
+
+function kauth()
+{
+  eval $(ad auth kube workload1.k8s.returnpath.net --k8s-auth-type kops -p apollo -n apollo)
+}
+
+function kauth_tst()
+{
+  eval $(ad auth kube workload1.k8s.tst.returnpath.net --k8s-auth-type kops -p apollo -n apollo)
 }

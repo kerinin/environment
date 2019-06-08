@@ -52,11 +52,28 @@ Plugin 'vim-scripts/groovyindent-unix'
 Plugin 'djoshea/vim-autoread'
 Plugin 'google/vim-maktaba'
 Plugin 'bazelbuild/vim-bazel'
+Plugin 'google/vim-codefmt'
+Plugin 'google/vim-glaive'
+Plugin 'rhysd/vim-clang-format'
+Plugin 'jparise/vim-graphql'
+Plugin 'reasonml-editor/vim-reason-plus'
+Plugin 'pangloss/vim-javascript'
+Plugin 'mxw/vim-jsx'
+" Plugin 'prettier/vim-prettier', {
+"   \ 'do': 'yarn install',
+"   \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
+Plugin 'w0rp/ale'
 
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
+
+call glaive#Install()
+Glaive codefmt plugin[mappings]
+Glaive codefmt google_java_executable="java -jar /path/to/google-java-format-VERSION-all-deps.jar"
+Glaive codefmt clang_format_executable='clang-format'
+
 " To ignore plugin indent changes, instead use:
 "filetype plugin on
 "
@@ -170,9 +187,10 @@ let g:markdown_fenced_languages = ['ruby', 'sh', 'javascript', 'lisp']
 :set colorcolumn=80
 
 " Go
-let g:go_fmt_autosave = 1
-let g:go_fmt_fail_silently = 1
-let g:go_fmt_command = "goimports"
+" Note - using codefmt now
+" let g:go_fmt_autosave = 1
+" let g:go_fmt_fail_silently = 1
+" let g:go_fmt_command = "goimports"
 au BufNewFile,BufRead *.go setlocal noet ts=4 sw=4 sts=4
 au FileType php setl sw=4 sts=4 et
 
@@ -205,3 +223,30 @@ au BufNewFile,BufRead Jenkinsfile setf groovy
 colorscheme base16-default-dark
 
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+
+augroup autoformat_settings
+  autocmd FileType bzl AutoFormatBuffer buildifier
+  " autocmd FileType c,cpp,proto,javascript AutoFormatBuffer clang-format
+  autocmd FileType dart AutoFormatBuffer dartfmt
+  autocmd FileType go AutoFormatBuffer gofmt
+  autocmd FileType gn AutoFormatBuffer gn
+  autocmd FileType html,css,json AutoFormatBuffer js-beautify
+  autocmd FileType java AutoFormatBuffer google-java-format
+  autocmd FileType python AutoFormatBuffer yapf
+  autocmd FileType re AutoFormatBuffer refmt
+  " Alternative: autocmd FileType python AutoFormatBuffer autopep8
+augroup END
+
+let g:terraform_fmt_on_save = 1
+
+" speed up godef https://github.com/fatih/vim-go/issues/1877
+let g:go_def_mode = 'godef'
+
+let g:ale_reasonml_refmt_executable = '/usr/local/bin/refmt'
+let g:ale_fixers = {'reason': ['refmt'], 'javascript': ['prettier', 'eslint']}
+let g:ale_fix_on_save = 1
+
+set nobackup
+set nowritebackup
+set wildignore+=*.bs.js,*.pyc,*.o,*.obj,*.svn,*.swp,*.class,*.hg,*.DS_Store,*.min.*
+let NERDTreeRespectWildIgnore=1
